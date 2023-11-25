@@ -51,23 +51,36 @@ export default Booking = ({ navigation, route }) => {
   };
 
   const handlePressBooking = () => {
+    // Periksa apakah name, email, atau phoneNumber kosong
+    if (!name || !email || !phoneNumber) {
+      // Tampilkan notifikasi untuk lengkapi data
+      alert('Lengkapi data: Name, Email, dan Phone Number harus diisi.');
+      return; // Hentikan eksekusi fungsi
+    }
+  
+    // Periksa apakah phoneNumberPrefix sudah ada di dalam phoneNumber
+    const formattedPhoneNumber = phoneNumber.includes(phoneNumberPrefix)
+      ? phoneNumber
+      : `${phoneNumberPrefix}${phoneNumber}`;
+  
     dispatch(
       ADD_ORDERED_HOTEL({
         name,
         email,
         days,
-        phoneNumber: phoneNumber.includes(phoneNumberPrefix)
-          ? phoneNumber
-          : `${phoneNumberPrefix}${phoneNumber}`,
+        phoneNumber: formattedPhoneNumber,
         hotel: detailHotel,
         price: totalPayment(),
       })
     );
+  
     showToast();
+  
     setTimeout(() => {
       navigation.goBack();
     }, 800);
   };
+  
 
   useEffect(() => {
     getDetailHotel();

@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Profile from "./profile";
-import Setting from "./setting";
+import setting from "./setting";
 import { Ionicons } from "@expo/vector-icons";
 
 const ProfileStack = createNativeStackNavigator();
@@ -34,7 +34,7 @@ export default IndexProfile = () => {
       />
       <ProfileStack.Screen
         name="Setting"
-        component={Setting}
+        component={setting}
         options={({ navigation }) => ({
           headerLeft: () => (
             <Ionicons

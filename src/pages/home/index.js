@@ -3,6 +3,7 @@ import Home from "./home";
 import { Ionicons } from "@expo/vector-icons";
 import IndexProfile from "../profile/index";
 import Favorite from "../favorite/favorite";
+import IndexReservation from "../reservation/index";
 
 const Tab = createBottomTabNavigator();
 
@@ -39,6 +40,17 @@ export default BottomNavigation = () => {
           ),
           headerTitleAlign: "center",
         }}
+      />
+      <Tab.Screen
+        name="IndexReservation"
+        component={IndexReservation}
+        options={() => ({
+          tabBarLabel: "Reservation",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="reader" color={color} size={size} />
+          ),
+          headerShown: false,
+        })}
       />
       <Tab.Screen
         name="IndexProfile"

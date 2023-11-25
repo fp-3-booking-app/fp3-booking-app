@@ -12,13 +12,16 @@ import {
   REMOVE_ALL_FAVORITED_HOTEL,
   REMOVE_ALL_ORDERED_HOTEL,
 } from "../../store/slicers/hotels";
+import { useNavigation } from "@react-navigation/native";
+// import IndexProfile from "./index";
 
 const GENDER_OPTIONS = ["Male", "Women"];
 
-export default Setting = ({ navigation }) => {
+export default Setting = ({ }) => {
   const { isAuthenticated } = useAuth();
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   const [firstName, setFirstName] = useState({
     value: "",
@@ -95,7 +98,7 @@ export default Setting = ({ navigation }) => {
       dispatch(REMOVE_ALL_ORDERED_HOTEL(true))
       dispatch(SET_AUTHENTICATED(false));
     } else {
-      navigation.navigate("Login");
+      navigation.navigate('IndexProfile');
     }
   };
 
@@ -161,7 +164,7 @@ export default Setting = ({ navigation }) => {
         <ListItem onPress={() => handlePressAuth()}>
           <ListItem.Content style={styles.list}>
             <ListItem.Title style={[styles.textBold, { color: "#c90237" }]}>
-              {isAuthenticated ? "Log out" : "Login"}
+              {"Log out"}
             </ListItem.Title>
           </ListItem.Content>
         </ListItem>

@@ -1,90 +1,51 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Image } from "react-native-elements";
+import { StyleSheet, Text, TouchableOpacity, View, ScrollView } from "react-native";
+import { Button, Image } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from '@react-navigation/native';
+import { useState } from "react";
 
 const dummyAvatar =
   "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80";
 
-export default ProfileSummary = ({
-  onPress,
-  orders,
-  favorites,
-  display,
-  user,
-  handlePressBooking,
-  handlePressFavorite,
-}) => {
-  return (
-    <View style={[styles.container, styles.boxShadow]}>
-      <View
-        style={[
-          styles.flexRow,
-          styles.justifyBetween,
-          styles.alignCenter,
-          styles.underLine,
-          { padding: 20 },
-        ]}
-      >
-        {user.email ? (
+  const ProfileSummary = ({ onPress, user }) => {
+    const navigation = useNavigation();
+    
+  
+    return (
+      <ScrollView>
+        <View style={[styles.container, styles.boxShadow]}>
+          <View
+            style={[
+              styles.flexRow,
+              styles.justifyBetween,
+              styles.alignCenter,
+              styles.underLine,
+              { padding: 20 },
+            ]}
+          >
+            {user.email ? (
           <Image source={{ uri: dummyAvatar }} containerStyle={styles.item} />
-        ) : (
-          <Text style={{ fontWeight: "bold", fontSize: 17 }}>
-            You're not logged in
-          </Text>
-        )}
-        <View style={styles.about}>
-          <Text style={[styles.textTitle, styles.textCenter]}>
-            {user.firstName ? `${user.firstName} ${user.lastName}` : user.email}
-          </Text>
-          <Text style={[styles.textSmall, styles.textCenter]}>
-            {user.email}
-          </Text>
+            ) : (
+              <Text style={{ fontWeight: "bold", fontSize: 17 }}>
+                You're not logged in
+              </Text>
+            )}
+            <View style={styles.about}>
+              <Text style={[styles.textTitle, styles.textCenter]}>
+                {user.firstName ? `${user.firstName} ${user.lastName}` : user.email}
+              </Text>
+              <Text style={[styles.textSmall, styles.textCenter]}>
+                {user.email}
+              </Text>
+            </View>
+          </View>
         </View>
-        <TouchableOpacity style={styles.settingIcon} onPress={onPress}>
-          <Ionicons name="settings" color="#489" size={25} />
-        </TouchableOpacity>
-      </View>
-      <View style={[styles.flexRow, styles.justifyBetween]}>
-        <TouchableOpacity
-          onPress={() => handlePressBooking()}
-          style={[
-            styles.containerInfo,
-            styles.alignCenter,
-            display === "ORDERED" && styles.boxShadowGreen,
-            {
-              justifyContent: "center",
-              borderRightWidth: 1,
-              borderColor: "#d6d6d6",
-            },
-          ]}
-        >
-          <Text style={[styles.textStandar, styles.textBold]}>Booking</Text>
-          <Text style={[styles.textStandar, styles.textBold, styles.textInfo]}>
-            {orders}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => handlePressFavorite()}
-          style={[
-            styles.containerInfo,
-            styles.alignCenter,
-            display === "FAVORITES" && styles.boxShadowGreen,
-            {
-              justifyContent: "center",
-              borderLeftWidth: 1,
-              borderColor: "#d6d6d6",
-            },
-          ]}
-        >
-          <Text style={[styles.textStandar, styles.textBold]}>Favorites</Text>
-          <Text style={[styles.textStandar, styles.textBold, styles.textInfo]}>
-            {favorites}
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-};
+        
+      </ScrollView>
+    );
+  };
+  
+  export default ProfileSummary;
 
 const styles = StyleSheet.create({
   container: {
