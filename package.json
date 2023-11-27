@@ -26,7 +26,7 @@
     "prop-types": "^15.8.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-native": "0.70.5",
+    "react-native": "0.70.8",
     "react-native-datepicker": "^1.7.2",
     "react-native-elements": "^3.4.2",
     "react-native-linear-gradient": "^2.6.2",
