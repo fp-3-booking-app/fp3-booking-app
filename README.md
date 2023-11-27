@@ -40,4 +40,4 @@ React and React Native for Front End Developer - Hacktiv8 Indonesia
 
 ## Program
 
-Studi Independen Bersertifikat oleh Kampus Merdeka Batch 3
+Studi Independen Bersertifikat oleh Kampus Merdeka Batch 5
