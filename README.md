@@ -31,7 +31,8 @@ Pass     : password123
 
 ## Developed by
 
-1. Muhammad Fajar Islam Imam M 
+1. Muhammad Fajar Islam Imam M
+2. Thaha Wafiq Adly
 
 
 ## Kelas
